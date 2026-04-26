@@ -59,3 +59,13 @@ graph TD
     
     Router -.->|Error Intercept| Fallback((Graceful Fallback)):::fallback
     Fallback -.->|Safe JSON| API
+
+    ⚠️ Hackathon Note: We spent our 24 hours prioritizing data integrity over a pretty shell. While our live frontend UI is a true 24-hour MVP, this repository contains a robust, production-ready AI backend.
+
+Key Architecture:
+
+Self-Correcting Loops: Built with LangGraph to ensure deterministic quality control and prevent LLM hallucinations with World Bank data.
+
+Graceful Fails: Built via FastAPI with strict Pydantic JSON enforcement so the API never crashes the client.
+
+Agentic RAG: Dynamically maps informal youth skills (e.g., "I fix phones") to formal ISCO-08 classifications and regional wage data.
