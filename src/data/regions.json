@@ -1,0 +1,47 @@
+{
+  "settings": ["Urban", "Rural"],
+  "regions": [
+    {
+      "name": "Sub-Saharan Africa",
+      "defaultCountry": "Ghana",
+      "flag": "🇬🇭",
+      "sub": "Accra · English",
+      "educationTaxonomyLabel": "Ghana NQF",
+      "educationLevels": [
+        "Did not complete BECE",
+        "BECE (basic school)",
+        "SHS / Vocational",
+        "Tertiary (Polytechnic / University)",
+        "Self-taught / informal apprenticeship"
+      ],
+      "countries": [
+        { "name": "Ghana", "flag": "🇬🇭", "language": "English (Ghana)" },
+        { "name": "Kenya", "flag": "🇰🇪", "language": "English / Swahili" },
+        { "name": "Nigeria", "flag": "🇳🇬", "language": "English" },
+        { "name": "Rwanda", "flag": "🇷🇼", "language": "Kinyarwanda / English" },
+        { "name": "Senegal", "flag": "🇸🇳", "language": "French / Wolof" }
+      ]
+    },
+    {
+      "name": "South Asia",
+      "defaultCountry": "Bangladesh",
+      "flag": "🇧🇩",
+      "sub": "Dhaka · Bangla / English",
+      "educationTaxonomyLabel": "Bangladesh NQF",
+      "educationLevels": [
+        "Below SSC",
+        "SSC (secondary)",
+        "HSC (higher secondary)",
+        "Tertiary (College / University)",
+        "Self-taught / informal apprenticeship"
+      ],
+      "countries": [
+        { "name": "Bangladesh", "flag": "🇧🇩", "language": "Bangla / English" },
+        { "name": "India", "flag": "🇮🇳", "language": "Hindi / English" },
+        { "name": "Nepal", "flag": "🇳🇵", "language": "Nepali / English" },
+        { "name": "Pakistan", "flag": "🇵🇰", "language": "Urdu / English" },
+        { "name": "Sri Lanka", "flag": "🇱🇰", "language": "Sinhala / Tamil / English" }
+      ]
+    }
+  ]
+}
