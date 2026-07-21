@@ -2,7 +2,6 @@
 
 AI infrastructure that translates informal labor descriptions into formal economic signals (ISCO-08, automation risk, ILO wage data) — built for the **World Bank FutureWorks Challenge at HackNation 2026**.
 
-> **🏆 Recognition**: Featured in the official Venture Showcase following the Hack-Nation 5th Global AI Hackathon (24-hour build). Ranked **#1** on the published Venture Showcase list.
 
 ## The Problem
 
@@ -83,7 +82,9 @@ docker run -p 7860:7860 -e GROQ_API_KEY=your_key unmapped-protocol
 
 ## Project Status
 
-Backend + MCP server functional and tested (28/28 passing); semantic router, LangGraph agent pipeline, and RAG ingestor fully operational. Frontend built during the 24hr hackathon window. Containerized deployment via Docker and Cloudflare Workers.
+Built during the 24-hour Hack-Nation 5th Global AI Hackathon. Featured in the official Venture Showcase, ranked #1 on the published list.
+
+Backend + MCP server functional and tested; semantic router, LangGraph agent pipeline, and RAG ingestor fully operational. Frontend built during the hackathon window. Containerized deployment via Docker and Cloudflare Workers.
 
 ## Documentation
 
