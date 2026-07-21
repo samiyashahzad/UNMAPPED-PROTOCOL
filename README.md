@@ -2,6 +2,8 @@
 
 AI infrastructure that translates informal labor descriptions into formal economic signals (ISCO-08, automation risk, ILO wage data) — built for the **World Bank FutureWorks Challenge at HackNation 2026**.
 
+> **🏆 Recognition**: Featured in the official Venture Showcase following the Hack-Nation 5th Global AI Hackathon (24-hour build). Ranked **#1** on the published Venture Showcase list.
+
 ## The Problem
 
 ~2 billion workers operate in the informal economy. A phone repair technician in Accra has the same core competencies as a certified "Electronics Mechanic" (ISCO-08 code 7421) — but no system recognizes that. Their skills are invisible to employers, governments, and training programs that only speak in formal taxonomies.
