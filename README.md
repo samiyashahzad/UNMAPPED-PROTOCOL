@@ -80,11 +80,13 @@ docker build -t unmapped-protocol .
 docker run -p 7860:7860 -e GROQ_API_KEY=your_key unmapped-protocol
 ```
 
-## Project Status
+## Highlights
 
-Built during the 24-hour Hack-Nation 5th Global AI Hackathon. Featured in the official Venture Showcase, ranked #1 on the published list.
-
-Backend + MCP server functional and tested; semantic router, LangGraph agent pipeline, and RAG ingestor fully operational. Frontend built during the hackathon window. Containerized deployment via Docker and Cloudflare Workers.
+- Built during the 24-hour Hack-Nation 5th Global AI Hackathon.
+- Featured in the official Venture Showcase, where it ranked #1 on the published Venture Showcase list.
+- Backend and MCP server functional; semantic router, LangGraph agent, and RAG ingestor fully operational.
+- Frontend completed during the hackathon.
+- Containerized with Docker and deployable via Cloudflare Workers.
 
 ## Documentation
 
