@@ -1,4 +1,6 @@
 import os
+import sys
+import sys
 import json
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv
@@ -44,7 +46,7 @@ def classify_intent(user_input: str) -> str:
             ("user", f"User Input: {user_input}")
         ]
         
-        print(f"[TRIAGE] Analyzing intent of input: '{user_input[:50]}...'")
+        print(f"[TRIAGE] Analyzing intent of input: '{user_input[:50]}...'", file=sys.stderr)
         response = classifier_llm.invoke(messages)
         
         # Clean up the output just in case the LLM wrapped it in markdown
@@ -57,11 +59,11 @@ def classify_intent(user_input: str) -> str:
         if intent not in ["ECONOMETRIC", "SECURITY_THREAT", "CONVERSATIONAL"]:
             intent = "CONVERSATIONAL"
             
-        print(f"[TRIAGE] Intent classified as: {intent}")
+        print(f"[TRIAGE] Intent classified as: {intent}", file=sys.stderr)
         return intent
         
     except Exception as e:
-        print(f"[TRIAGE ERROR] Failed to classify intent: {e}")
+        print(f"[TRIAGE ERROR] Failed to classify intent: {e}", file=sys.stderr)
         # Default fallback so the system doesn't crash. 
         # Routing to CONVERSATIONAL is a safe fallback.
         return "CONVERSATIONAL"
@@ -86,5 +88,5 @@ def handle_conversational(user_input: str) -> str:
         response = classifier_llm.invoke(messages)
         return response.content.strip()
     except Exception as e:
-        print(f"[CONVERSATIONAL ERROR]: {e}")
+        print(f"[CONVERSATIONAL ERROR]: {e}", file=sys.stderr)
         return "I am currently optimized for econometric mapping. Please provide a labor description."

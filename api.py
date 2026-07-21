@@ -2,6 +2,7 @@ from typing import Optional
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import json
+import sys
 from router import generate_solution
 from ingestor import ingest_external_data, is_vector_db_ready
 from dotenv import load_dotenv
@@ -38,7 +39,7 @@ def ask_agent(request: QueryRequest):
         return {"response": json.loads(result["data"])}
         
     except Exception as e:
-        print(f"FATAL SERVER ERROR: {str(e)}")
+        print(f"FATAL SERVER ERROR: {str(e)}", file=sys.stderr)
         raise HTTPException(status_code=500, detail="Internal Protocol Error.")
 
 
@@ -63,6 +64,20 @@ def health():
             "message": "Vector DB indexed." if vector_db_ready else "Vector DB empty. Run /ingest-external-data.",
         },
     }
+
+
+@app.get("/labor-signals/{region}")
+def labor_signals(region: str):
+    """Return real ILO ILOSTAT labor data for a given region."""
+    from router import LABOR_SIGNALS
+    data = LABOR_SIGNALS.get(region)
+    if not data:
+        raise HTTPException(
+            status_code=404,
+            detail=f"No labor data available for region: {region}"
+        )
+    return {"region": region, "data": data}
+
 
 # To run this, you will type this in your terminal:
 # uvicorn api:app --reload

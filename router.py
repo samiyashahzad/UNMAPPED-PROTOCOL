@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 from pathlib import Path
 from difflib import get_close_matches
@@ -23,7 +24,7 @@ STATIC_DIR = BASE_DIR / "data" / "static"
 def _load_json(filename: str) -> dict:
     path = STATIC_DIR / filename
     if not path.exists():
-        print(f"WARNING: Static data file not found: {path}")
+        print(f"WARNING: Static data file not found: {path}", file=sys.stderr)
         return {}
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
@@ -32,8 +33,8 @@ def _load_json(filename: str) -> dict:
 LABOR_SIGNALS: dict = _load_json("labor_signals.json")
 AUTOMATION_SCORES: dict = _load_json("automation_scores.json")
 
-print(f"Loaded labor signals for: {list(LABOR_SIGNALS.keys())}")
-print(f"Loaded automation scores for {len(AUTOMATION_SCORES)} occupations")
+print(f"Loaded labor signals for: {list(LABOR_SIGNALS.keys())}", file=sys.stderr)
+print(f"Loaded automation scores for {len(AUTOMATION_SCORES)} occupations", file=sys.stderr)
 
 
 def lookup_automation_score(role_name: str) -> dict | None:
@@ -197,7 +198,7 @@ OUTPUT FORMAT -- respond with ONLY this JSON, no markdown, no preamble:
     full_prompt = f"{system_instruction}\n\nUser's Informal Experience: {informal_text}"
 
     try:
-        print(f"Agent analyzing labor signals for region: {region}...")
+        print(f"Agent analyzing labor signals for region: {region}...", file=sys.stderr)
         response = agent_executor.invoke({"messages": [("user", full_prompt)]})
 
         final_output = response["messages"][-1].content
@@ -250,7 +251,7 @@ OUTPUT FORMAT -- respond with ONLY this JSON, no markdown, no preamble:
         return {"status": "success", "data": final_output}
 
     except Exception as e:
-        print(f"Agent workflow failed: {str(e)}")
+        print(f"Agent workflow failed: {str(e)}", file=sys.stderr)
         country_data = LABOR_SIGNALS.get(region, {})
         years = country_data.get("data_years", {})
 

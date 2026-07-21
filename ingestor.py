@@ -1,4 +1,5 @@
 import os
+import sys
 from pathlib import Path
 from langchain_community.document_loaders import PyPDFLoader, CSVLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -23,7 +24,7 @@ def get_embedding_model():
 
 def ingest_data(file_path: str):
     """Safely loads a file and stores it in the vector database."""
-    print(f"Attempting to ingest: {file_path}")
+    print(f"Attempting to ingest: {file_path}", file=sys.stderr)
     
     # 1. Graceful Fail: Check if file exists
     if not os.path.exists(file_path):
@@ -56,7 +57,7 @@ def ingest_data(file_path: str):
         
     except Exception as e:
         # Catch any weird parsing errors or API limits
-        print(f"CRITICAL ERROR during ingestion: {str(e)}")
+        print(f"CRITICAL ERROR during ingestion: {str(e)}", file=sys.stderr)
         return {"status": "error", "message": f"Ingestion failed: {str(e)}"}
 
 def ingest_external_data(data_dir: str = str(EXTERNAL_DATA_DIR)):
@@ -122,5 +123,5 @@ def get_context(query: str, k: int = 3):
         docs = vectorstore.similarity_search(query, k=k)
         return "\n\n".join([doc.page_content for doc in docs])
     except Exception as e:
-        print(f"Warning: Vector DB search unavailable. Returning empty context. Error: {str(e)}")
+        print(f"Warning: Vector DB search unavailable. Returning empty context. Error: {str(e)}", file=sys.stderr)
         return "" # Return empty string instead of crashing
