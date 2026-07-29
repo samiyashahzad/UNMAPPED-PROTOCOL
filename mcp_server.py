@@ -16,12 +16,7 @@ def _error_response(message: str) -> dict:
 
 
 @mcp.tool()
-async def map_informal_skills(
-    informal_text: str,
-    region: str = "Ghana",
-    language: str = "English",
-    ctx:Context
-) -> dict:
+async def map_informal_skills(ctx:Context,informal_text: str,region: str = "Ghana",language: str = "English"    ) -> dict:
     """
     Maps a young person's informal work experience to formal 
     economic signals, ISCO occupational codes, and real ILO 
@@ -30,7 +25,6 @@ async def map_informal_skills(
     try:
         await ctx.info(f"Mapping informal skills for {region} and language {language}...")      
         async with httpx.AsyncClient(timeout=30) as client:
-            await ctx.report_progress(current=1,total=100,description="Connecting to UNMAPPED Backend...")
             response = await client.post(
                 f"{BACKEND_URL}/ask-agent",
                 json={
@@ -62,7 +56,7 @@ async def map_informal_skills(
 
 
 @mcp.tool()
-async def get_labor_signals(region: str = "Ghana", ctx:Context) -> dict:
+async def get_labor_signals(ctx:Context, region: str = "Ghana") -> dict:
     """
     Returns real ILO ILOSTAT econometric signals for a region —
     youth unemployment, mean wage, NEET rate, sector breakdown.
