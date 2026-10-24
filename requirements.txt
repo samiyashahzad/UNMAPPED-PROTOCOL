@@ -8,9 +8,13 @@ langgraph
 langchain-community
 langchain-text-splitters
 langchain-chroma
+langchain-groq
 chromadb
 pypdf
 langchain-huggingface
 sentence-transformers
+python-dotenv
+httpx
+mcp==1.12.4
 pytest
 pytest-asyncio
